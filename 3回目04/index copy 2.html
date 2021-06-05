@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meat charset="utf-8" />
+    <title>Using FirebaseUI Auth, on the Web</title>
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+  </head>
+  <body>
+    <h1>Firebase Auth Quickstart Demo</h1>
+    <div id="firebaseui-auth-container"></div>
+  </script>
+
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
+<script>
+// TODO: Replace the following with your app's Firebase project configuration
+// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+var firebaseConfig = {
+  apiKey: "AIzaSyAwRLMr7fnydhfWM2MQ8HWtQV_Yv9mTU8k",
+        authDomain: "dev20chat-6ae4e.firebaseapp.com",
+        databaseURL: "https://dev20chat-6ae4e-default-rtdb.firebaseio.com",
+        projectId: "dev20chat-6ae4e",
+        storageBucket: "dev20chat-6ae4e.appspot.com",
+        messagingSenderId: "664945366312",
+        appId: "1:664945366312:web:0163381f7c4a0ae8c9ac1d"
+  // ...
+};
+
+firebase.initializeApp(firebaseConfig);
+  var ui = new firebaseui.auth.AuthUI(firebase.auth()); //初期化
+  ui.start('#firebaseui-auth-container', {
+    signInOptions: [
+      // List of OAuth providers supported.
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
+    ],
+    // ログイン完了時のリダイレクト先
+    signInSuccessUrl: '/auth/multi/',
+    // Other config options...
+  });
+  </script>
+
+  </body>
+</html>
